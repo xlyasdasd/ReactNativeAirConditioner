@@ -155,7 +155,7 @@ class HomeScreen extends React.Component {
                 // roundAvatar
                 title={`${item.name}`}
                 subtitle={'远程id:'+item.sign_id}
-                onPress= {()=>navigate('ControlScreen',{ name:item.name,device_room:item.device_room,sign_id:item.sign_id})}
+                onPress= {()=>navigate('ControlScreen',{ name:item.name,device_room:item.deviceRooms,sign_id:item.sign_id})}
                 avatarStyle={{backgroundColor:'#FFF'}}
                 avatar={require('../img/aircondition.png')}
                 containerStyle={{ borderBottomWidth: 0 }}

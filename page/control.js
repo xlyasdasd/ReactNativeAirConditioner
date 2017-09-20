@@ -31,6 +31,7 @@ class LoginScreen extends React.Component {
      power:true,//false关机 true开机
      wind:'1',//0自动 1低速 2中速 3 高速
      mode: '1',//0制冷 1制热 2新风 3除湿
+     currentDevice:this.props.navigation.state.params.device_room[0].name
   };
   }
   powerOnChecked = ()=>{
@@ -58,7 +59,11 @@ class LoginScreen extends React.Component {
         temp--;
         this.setState({temp:temp})
       }
-      }
+    }
+  selectRoom = (room_id,name)=>{
+      console.log(name);
+        // this.setState({currentDevice:name});
+  }
   render() {
 
     const { params } = this.props.navigation.state;
@@ -67,20 +72,17 @@ class LoginScreen extends React.Component {
     let powerOn = this.state.power;
 
     return (
-      <View style={{flexDirection:'column',flex:1}}>
-        <View style={{width:screenWidth,height:200}}>
-          <MenuContext>
+      <MenuContext>
+      <View style={{backgroundColor:'#44BBA3',flexDirection:'column',flex:1}}>
+        <View style={{width:screenWidth,height:50}}>
           <Menu>
-               <MenuTrigger text='Select action' />
+               <MenuTrigger style={{height:50,justifyContent:'center',alignItems:'center'}}>
+                   <Text style={{color:'#FFF'}}>当前设备: {this.state.currentDevice}</Text>
+               </MenuTrigger>
                <MenuOptions>
-                 <MenuOption onSelect={() => alert(`Save`)} text='Save' />
-                 <MenuOption onSelect={() => alert(`Delete`)} >
-                   <Text style={{color: 'red'}}>Delete</Text>
-                 </MenuOption>
-                 <MenuOption onSelect={() => alert(`Not called`)} disabled={true} text='Disabled' />
+                 {params.device_room.map(menuOption => <MenuOption onSelect={this.selectRoom(menuOption.room_id,menuOption.name)}  text={menuOption.name}/>)}
                </MenuOptions>
              </Menu>
-           </MenuContext>
           </View>
       <View style = {styles.container}>
         <View style = {{flex:2,alignItems:'center',flexDirection:'row'}}>
@@ -202,6 +204,8 @@ class LoginScreen extends React.Component {
       </View>
       {/* 最外层 */}
     </View>
+  </MenuContext>
+
     );
 
 
