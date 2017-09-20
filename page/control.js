@@ -7,6 +7,7 @@ import {
   StyleSheet,TouchableWithoutFeedback,
   TouchableOpacity
 } from 'react-native';
+import {saveUser, getUser,saveInstance} from '../storage/SWCStorage';
 import CheckBox from 'react-native-checkbox';
 import {
   Menu,
@@ -16,6 +17,7 @@ import {
   MenuContext,
 } from 'react-native-popup-menu';
 import { StackNavigator } from 'react-navigation';
+import {operationDevice} from '../net/net'
 var Dimensions = require('Dimensions');
 var screenWidth = Dimensions.get('window').width;
 
@@ -27,13 +29,39 @@ class LoginScreen extends React.Component {
   constructor(props){
     super(props);
    this.state = {
+     userID:'',
+     token:'',
+     sign_id:'',
      temp: 18,
      power:true,//false关机 true开机
      wind:'1',//0自动 1低速 2中速 3 高速
      mode: '1',//0制冷 1制热 2新风 3除湿
+     sign_id:this.props.navigation.state.params.sign_id,
+     currentRoomId:this.props.navigation.state.params.device_room[0].room_id,
      currentDevice:this.props.navigation.state.params.device_room[0].name
   };
   }
+
+  componentDidMount() {
+    getUser().then(ret => {
+        this.setState({userId:ret.userId,token:ret.token})
+        this.selectRoom(this.state.currentRoomId,ret.token);
+    }
+  ).catch(err => {
+
+      console.warn(err.message);
+      switch (err.name) {
+          case 'NotFoundError':
+              // TODO;
+              break;
+            case 'ExpiredError':
+                // TODO
+                break;
+      }
+    }
+  )
+  }
+
   powerOnChecked = ()=>{
       this.setState({power:true})
   }
@@ -60,9 +88,16 @@ class LoginScreen extends React.Component {
         this.setState({temp:temp})
       }
     }
+    // 设置当前房间
   selectRoom = (room_id,name)=>{
-      console.log(name);
-        // this.setState({currentDevice:name});
+      // console.log(name);
+        this.setState({currentDevice:name});
+        this.setState({currentRoomId:room_id})
+        const api = 'set'
+        let params = {token:this.state.token,sign_id:this.state.sign_id}
+        operationDevice('set',room_id,params).then((responseJson)=>{
+          console.log(responseJson)
+        })
   }
   render() {
 
@@ -80,7 +115,7 @@ class LoginScreen extends React.Component {
                    <Text style={{color:'#FFF'}}>当前设备: {this.state.currentDevice}</Text>
                </MenuTrigger>
                <MenuOptions>
-                 {params.device_room.map(menuOption => <MenuOption onSelect={this.selectRoom(menuOption.room_id,menuOption.name)}  text={menuOption.name}/>)}
+                 {params.device_room.map((menuOptionItem,i) => <MenuOption key = {i} onSelect={() => this.selectRoom(menuOptionItem.room_id,menuOptionItem.name)} text={menuOptionItem.name}/>)}
                </MenuOptions>
              </Menu>
           </View>

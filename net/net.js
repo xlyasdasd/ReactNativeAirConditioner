@@ -16,7 +16,18 @@ export function doPost(api,params){
   return fetch(url,init).then((response) => response.json())
 }
 
-
+export function operationDevice(api,room_id,params){
+  const url = 'http://localhost:8080/device/'+room_id+'/'+api
+  const headers = new Headers();
+  headers.append('Content-Type','application/x-www-form-urlencoded');
+  const init = {
+    method: "POST",
+    headers,
+    mode:"cors",
+    body:qs.stringify(params)
+  }
+  return fetch(url,init).then((response) => response.json())
+}
 export function doGet(api,params){
   const url = 'http://115.28.242.24:8080/SWC_AC/'+api;
   const headers = new Headers();
