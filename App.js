@@ -56,6 +56,7 @@ class LoginScreen extends React.Component {
           const userId = responseJson.data[0].user.id
           var user = {token:token,userId:userId,username:username}
           saveUser(user)
+          
           navigate('DeviceList');
         }else {
           alert(responseJson.message)

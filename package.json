@@ -21,7 +21,8 @@
 		"react-native-popup-menu": "^0.8.3",
 		"react-native-storage": "^0.2.2",
 		"react-native-vector-icons": "^4.4.0",
-		"react-navigation": "^1.0.0-beta.11"
+		"react-navigation": "^1.0.0-beta.11",
+		"xtend": "^4.0.1"
 	},
 	"devDependencies": {
 		"babel-jest": "^21.0.2",
