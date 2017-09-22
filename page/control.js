@@ -9,6 +9,7 @@ import {
 } from 'react-native';
 import {saveUser, getUser,saveInstance} from '../storage/SWCStorage';
 import CheckBox from 'react-native-checkbox';
+import Spinner from 'react-native-loading-spinner-overlay';
 import {
   Menu,
   MenuOptions,
@@ -36,6 +37,7 @@ class LoginScreen extends React.Component {
      power:0,//0关机 1开机
      wind:1,//0自动 1低速 2中速 3 高速
      mode: 1,//0制热 1制冷 2除湿 3通风 4地暖 5地暖+制热
+     visible:true,
      sign_id:this.props.navigation.state.params.sign_id,
      currentRoomId:this.props.navigation.state.params.device_room[0].room_id,
      currentDevice:this.props.navigation.state.params.device_room[0].name
@@ -45,7 +47,8 @@ class LoginScreen extends React.Component {
   componentDidMount() {
     getUser().then(ret => {
         this.setState({userId:ret.userId,token:ret.token})
-        this.selectRoom(this.state.currentRoomId,ret.token);
+        console.log("获取用户数据成功")
+        this.selectRoom(this.state.currentRoomId,this.state.currentDevice);
     }
   ).catch(err => {
 
@@ -62,49 +65,75 @@ class LoginScreen extends React.Component {
   )
   }
 
-  powerOnChecked = ()=>{
-      this.setState({power:1})
-      operationDevice(0,this.state)
+  powerOnChecked = (power)=>{
+    console.log("nowPower===> "+power)
+      this.setState({power:power}, () => {
+        operationDevice(1,this.state).catch((e)=>{
+          console.log(e)
+        });
+    // Do something here.
+})
   }
-  powerOffChecked = ()=>{
-      this.setState({power:0})
-      operationDevice(0,this.state)
+  powerOffChecked = (power)=>{
+      this.setState({power:power},() => {
+        operationDevice(1,this.state).catch((e)=>{
+          console.log(e)
+        });
+    // Do something here.
+})
   }
   setWind = (wind)=>{
-    this.setState({wind:wind})
-    operationDevice(2,this.state)
+    this.setState({wind:wind},() => {
+      operationDevice(4,this.state).catch((e)=>{
+        console.log(e)
+      });
+  // Do something here.
+})
   }
   setMode = (mode)=>{
-    this.setState({mode:mode})
-    operationDevice(1,this.state)
+    this.setState({mode:mode},() => {
+      operationDevice(2,this.state).catch((e)=>{
+        console.log(e)
+      });
+  // Do something here.
+})
   }
   tempUp = ()=>{
     let temp = this.state.temp;
     if (temp<32) {
       temp++;
-      this.setState({temp:temp})
-      operationDevice(3,this.state)
+      this.setState({temp:temp},() => {
+        operationDevice(8,this.state).catch((e)=>{
+          console.log(e)
+        });
+      })
     }
     }
     tempDown = ()=>{
       let temp = this.state.temp;
       if (temp>16) {
         temp--;
-        this.setState({temp:temp})
-        operationDevice(3,this.state)
+        this.setState({temp:temp},() => {
+          operationDevice(8,this.state).catch((e)=>{
+            console.log(e)
+          });
+        })
       }
     }
     // 设置当前房间
   selectRoom = (room_id,name)=>{
       // console.log(name);
-        this.setState({currentDevice:name});
+        this.setState({visible:true,currentDevice:name});
         this.setState({currentRoomId:room_id})
         const api = 'set'
         let params = {token:this.state.token,sign_id:this.state.sign_id}
         setRoom('set',room_id,params).then((res)=>{
-          this.setState({temp:res.data.temp,power:res.data.power,mode:res.data.mode,wind:res.data.wind})
+          this.setState({visible:false,temp:res.data.temp,power:res.data.power,mode:res.data.mode,wind:res.data.wind})
           console.log(res)
-        })
+        }).catch((e)=>{
+          this.setState({visible:false})
+          console.log(e)
+        });
   }
   render() {
 
@@ -164,15 +193,17 @@ class LoginScreen extends React.Component {
                         labelStyle={{color:'#FFF'}}
                         checkedImage={require('../img/radioOn.png')}
                         uncheckedImage={require('../img/radioOff.png')}
-                        onChange={this.powerOnChecked}
+                        onChange={()=>{this.powerOnChecked(1)}}
                         checked={powerOn}
+                        underlayColor = '#44BBA3'
                       />
                       <CheckBox
                         label='关机'
                         checkedImage={require('../img/radioOn.png')}
                         uncheckedImage={require('../img/radioOff.png')}
                         labelStyle={{color:'#FFF'}}
-                        onChange={this.powerOffChecked}
+                        underlayColor = '#44BBA3'
+                        onChange={()=>{this.powerOffChecked(0)}}
                         checked={powerOff}
                       />
                 </View>
@@ -185,7 +216,8 @@ class LoginScreen extends React.Component {
                         labelStyle={{color:'#FFF'}}
                         checkedImage={require('../img/radioOn.png')}
                         uncheckedImage={require('../img/radioOff.png')}
-                        onChange={this.setWind(0)}
+                        onChange={()=>{this.setWind(0)}}
+                        underlayColor = '#44BBA3'
                         checked={autoWind}
                       />
                       <CheckBox
@@ -193,7 +225,8 @@ class LoginScreen extends React.Component {
                         checkedImage={require('../img/radioOn.png')}
                         uncheckedImage={require('../img/radioOff.png')}
                         labelStyle={{color:'#FFF'}}
-                        onChange={this.setWind(1)}
+                        underlayColor = '#44BBA3'
+                        onChange={()=>{this.setWind(1)}}
                         checked={lowWind}
                       />
                       <CheckBox
@@ -201,7 +234,8 @@ class LoginScreen extends React.Component {
                         checkedImage={require('../img/radioOn.png')}
                         uncheckedImage={require('../img/radioOff.png')}
                         labelStyle={{color:'#FFF'}}
-                        onChange={this.setWind(2)}
+                        underlayColor = '#44BBA3'
+                        onChange={()=>{this.setWind(2)}}
                         checked={midWind}
                       />
                       <CheckBox
@@ -209,8 +243,9 @@ class LoginScreen extends React.Component {
                         checkedImage={require('../img/radioOn.png')}
                         uncheckedImage={require('../img/radioOff.png')}
                         labelStyle={{color:'#FFF'}}
-                        onChange={this.setWind(3)}
+                        onChange={()=>{this.setWind(3)}}
                         checked={highWind}
+                        underlayColor = '#44BBA3'
                       />
                 </View>
                 {/* 风速 */}
@@ -222,7 +257,8 @@ class LoginScreen extends React.Component {
                         labelStyle={{color:'#FFF'}}
                         checkedImage={require('../img/radioOn.png')}
                         uncheckedImage={require('../img/radioOff.png')}
-                        onChange={this.setMode(0)}
+                        onChange={()=>{this.setMode(0)}}
+                        underlayColor = '#44BBA3'
                         checked={hot}
                       />
                       <CheckBox
@@ -230,7 +266,8 @@ class LoginScreen extends React.Component {
                         checkedImage={require('../img/radioOn.png')}
                         uncheckedImage={require('../img/radioOff.png')}
                         labelStyle={{color:'#FFF'}}
-                        onChange={this.setMode(1)}
+                        underlayColor = '#44BBA3'
+                        onChange={()=>{this.setMode(1)}}
                         checked={cold}
                       />
                       <CheckBox
@@ -238,7 +275,8 @@ class LoginScreen extends React.Component {
                         checkedImage={require('../img/radioOn.png')}
                         uncheckedImage={require('../img/radioOff.png')}
                         labelStyle={{color:'#FFF'}}
-                        onChange={this.setMode(2)}
+                        underlayColor = '#44BBA3'
+                        onChange={()=>{this.setMode(2)}}
                         checked={dry}
                       />
                       <CheckBox
@@ -246,7 +284,8 @@ class LoginScreen extends React.Component {
                         checkedImage={require('../img/radioOn.png')}
                         uncheckedImage={require('../img/radioOff.png')}
                         labelStyle={{color:'#FFF'}}
-                        onChange={this.setMode(3)}
+                        underlayColor = '#44BBA3'
+                        onChange={()=>{this.setMode(3)}}
                         checked={wind}
                       />
                       <CheckBox
@@ -254,15 +293,17 @@ class LoginScreen extends React.Component {
                         checkedImage={require('../img/radioOn.png')}
                         uncheckedImage={require('../img/radioOff.png')}
                         labelStyle={{color:'#FFF'}}
-                        onChange={this.setMode(4)}
+                        underlayColor = '#44BBA3'
+                        onChange={()=>{this.setMode(4)}}
                         checked={floorHot}
                       />
                       <CheckBox
                         label='热暖'
+                        underlayColor = '#44BBA3'
                         checkedImage={require('../img/radioOn.png')}
                         uncheckedImage={require('../img/radioOff.png')}
                         labelStyle={{color:'#FFF'}}
-                        onChange={this.setMode(5)}
+                        onChange={()=>{this.setMode(5)}}
                         checked={warmHot}
                       />
                 </View>
@@ -271,6 +312,7 @@ class LoginScreen extends React.Component {
         </View>
       </View>
       {/* 最外层 */}
+      <Spinner visible={this.state.visible} textContent={""} textStyle={{color: '#FFF'}} />
     </View>
   </MenuContext>
 

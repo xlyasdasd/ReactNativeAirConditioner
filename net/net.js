@@ -17,15 +17,19 @@ export function doPost(api,params){
 }
 
 export function operationDevice(operation_id,state){
-  const url = 'http://localhost:8080/device/'+room_id+'/operation'
+  console.log(state.power)
+  // const url = 'http://localhost:8080/device/'+state.currentRoomId+'/operation'
+  const url = 'http://115.28.242.24:8080/ssm/device/'+state.currentRoomId+'/operation'
   const headers = new Headers();
   var params = {
-    room_id:state.room_id,
+    token:state.token,
+    room_id:state.currentRoomId,
+    sign_id:state.sign_id,
     operation_id:operation_id,
     power:state.power,
     mode:state.mode,
     wind:state.wind,
-    power:state.power
+    temp:state.temp
   }
   headers.append('Content-Type','application/x-www-form-urlencoded');
   const init = {
@@ -38,7 +42,8 @@ export function operationDevice(operation_id,state){
 }
 
 export function setRoom(api,room_id,params){
-  const url = 'http://localhost:8080/device/'+room_id+'/'+api
+  // const url = 'http://localhost:8080/device/'+room_id+'/'+api
+  const url = 'http://115.28.242.24:8080/ssm/device/'+room_id+'/'+api
   const headers = new Headers();
   headers.append('Content-Type','application/x-www-form-urlencoded');
   const init = {

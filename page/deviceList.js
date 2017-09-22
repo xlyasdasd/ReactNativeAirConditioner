@@ -14,6 +14,24 @@ import { StackNavigator ,TabNavigator} from 'react-navigation';
 
 
 class HomeScreen extends React.Component {
+
+  static navigatorButtons = {
+      rightButtons: [
+        {
+          icon: require('../img/navicon_add.png'), // for icon button, provide the local image asset name
+          id: 'add' // id for this button, given in onNavigatorEvent(event) to help understand which button was clicked
+        }
+      ]
+    };
+
+    onNavigatorEvent(event) { // this is the onPress handler for the two buttons together
+       if (event.type == 'NavBarButtonPress') { // this is the event type for button presses
+         if (event.id == 'add') {
+           AlertIOS.alert('NavBar', 'Add button pressed');
+         }
+       }
+     }
+
   static navigationOptions = {
     title: '设备列表',
   };
@@ -156,7 +174,7 @@ class HomeScreen extends React.Component {
                 title={`${item.name}`}
                 subtitle={'远程id:'+item.sign_id}
                 onPress= {()=>navigate('ControlScreen',{ name:item.name,device_room:item.deviceRooms,sign_id:item.sign_id})}
-                avatarStyle={{backgroundColor:'#FFF'}}
+                avatarStyle={{backgroundColor:'#FFF',height:35,width:35}}
                 avatar={require('../img/aircondition.png')}
                 containerStyle={{ borderBottomWidth: 0 }}
               />

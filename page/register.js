@@ -13,22 +13,20 @@ import {
   TouchableHighlight,
   ActivityIndicator,
 } from 'react-native';
-import {doPost} from './net/net'
+import {doPost} from '../net/net'
 import {Headers,fetch} from 'fetch'
 import { List, ListItem, SearchBar } from "react-native-elements";
 import { StackNavigator ,TabNavigator} from 'react-navigation';
-import Control from './page/control';
-import DeviceList from './page/deviceList';
-import Register from './page/register';
+
 import Storage from 'react-native-storage';
-import {saveUser,getUser} from './storage/SWCStorage.js'
+
 var Dimensions = require('Dimensions');
 //获取屏幕宽度
 var screenWidth = Dimensions.get('window').width;
 
-class LoginScreen extends React.Component {
+export default class RegisterScreen extends React.Component {
   static navigationOptions = {
-    title:'登录',
+    title:'注册',
   };
   constructor(props){
     super(props);
@@ -40,63 +38,15 @@ class LoginScreen extends React.Component {
   };
   }
 
-  componentDidMount(){
-    getUser().then(user=>{
-      this.setState({username:user.username,password:user.password})
-    }).catch(err => {
-    		console.warn(err.message);
-    		switch (err.name) {
-    		    case 'NotFoundError':
-    		        // TODO;
-    		        break;
-    	        case 'ExpiredError':
-    	            // TODO
-    	            break;
-    		}
-    	}
-    )
-  }
-  makeRegister = ()=>{
-    this.props.navigation.navigate('Register');
-  }
-  makeLogin = ()=>{
-      const {username,password} = this.state;
-      this.setState({ loading: true });
-      const { navigate } = this.props.navigation;
-      var params = {
-          "username": username,
-          "password": password,
-      };
+  makeRegister=()=>{
 
-      doPost('user/login',params)
-      .then((responseJson) => {
-        console.log(responseJson);
-        if(responseJson.status === 1){
-          const token = responseJson.data[0].token
-          const userId = responseJson.data[0].user.id
-          var user = {token:token,userId:userId,username:username,password:password}
-          saveUser(user)
-
-          navigate('DeviceList');
-        }else {
-          alert(responseJson.message)
-        }
-
-      })
-      .catch((error) => {
-        console.error(error);
-      });
   }
+
   render() {
     const { navigate } = this.props.navigation;
     return (
       <View style={styles.container}>
       {/** 用于放置顶部的大图片 */}
-      <View style={styles.topViewContainer}>
-          <Image source={require('./img/logo.png')}
-                 style={styles.topImageStyle}/>
-      </View>
-
       <View style={styles.textInputContianer}>
       <TextInput
       style = {{flex:1,marginLeft:10}}
@@ -118,18 +68,10 @@ class LoginScreen extends React.Component {
 
       </View>
       {/** 用于与登录相关的按钮 */}
-
-          {/**手机号登录*/}
-          <TouchableHighlight   style={styles.loginByPhoneBtnContianer} onPress={this.makeLogin} >
-              <Text
-              style={styles.loginByPhoneBtnTitle}
-              >手机号登录</Text>
-          </TouchableHighlight>
           {/**立即注册*/}
-          <TouchableHighlight onPress={this.makeRegister} style={styles.registeredBtnContianer}>
-              <Text style={styles.registeredBtnTitle}>立即注册</Text>
+          <TouchableHighlight onPress={this.makeRegister} style={styles.loginByPhoneBtnContianer}>
+              <Text style={styles.loginByPhoneBtnTitle}>立即注册</Text>
           </TouchableHighlight>
-
 
   </View>
     );
@@ -245,16 +187,3 @@ const styles = StyleSheet.create({
         fontSize:13
     }
 });
-
-
-
-const HomeNavi = StackNavigator({
-  LoginScreen: { screen: LoginScreen },
-  DeviceList:{screen:DeviceList},
-  Register:{screen:Register},
-  ControlScreen:{screen:Control}
-});
-export default HomeNavi;
-
-// if you are using create-react-native-app you don't need this line
-AppRegistry.registerComponent('SWCRN', () => HomeNavi);
