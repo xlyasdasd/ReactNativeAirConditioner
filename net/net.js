@@ -16,7 +16,28 @@ export function doPost(api,params){
   return fetch(url,init).then((response) => response.json())
 }
 
-export function operationDevice(api,room_id,params){
+export function operationDevice(operation_id,state){
+  const url = 'http://localhost:8080/device/'+room_id+'/operation'
+  const headers = new Headers();
+  var params = {
+    room_id:state.room_id,
+    operation_id:operation_id,
+    power:state.power,
+    mode:state.mode,
+    wind:state.wind,
+    power:state.power
+  }
+  headers.append('Content-Type','application/x-www-form-urlencoded');
+  const init = {
+    method: "POST",
+    headers,
+    mode:"cors",
+    body:qs.stringify(params)
+  }
+  return fetch(url,init).then((response) => response.json())
+}
+
+export function setRoom(api,room_id,params){
   const url = 'http://localhost:8080/device/'+room_id+'/'+api
   const headers = new Headers();
   headers.append('Content-Type','application/x-www-form-urlencoded');

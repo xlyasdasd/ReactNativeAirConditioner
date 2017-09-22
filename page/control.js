@@ -17,7 +17,7 @@ import {
   MenuContext,
 } from 'react-native-popup-menu';
 import { StackNavigator } from 'react-navigation';
-import {operationDevice} from '../net/net'
+import {setRoom ,operationDevice} from '../net/net'
 var Dimensions = require('Dimensions');
 var screenWidth = Dimensions.get('window').width;
 
@@ -33,9 +33,9 @@ class LoginScreen extends React.Component {
      token:'',
      sign_id:'',
      temp: 18,
-     power:true,//false关机 true开机
-     wind:'1',//0自动 1低速 2中速 3 高速
-     mode: '1',//0制冷 1制热 2新风 3除湿
+     power:0,//0关机 1开机
+     wind:1,//0自动 1低速 2中速 3 高速
+     mode: 1,//0制热 1制冷 2除湿 3通风 4地暖 5地暖+制热
      sign_id:this.props.navigation.state.params.sign_id,
      currentRoomId:this.props.navigation.state.params.device_room[0].room_id,
      currentDevice:this.props.navigation.state.params.device_room[0].name
@@ -63,22 +63,27 @@ class LoginScreen extends React.Component {
   }
 
   powerOnChecked = ()=>{
-      this.setState({power:true})
+      this.setState({power:1})
+      operationDevice(0,this.state)
   }
   powerOffChecked = ()=>{
-      this.setState({power:false})
+      this.setState({power:0})
+      operationDevice(0,this.state)
   }
   setWind = (wind)=>{
-
+    this.setState({wind:wind})
+    operationDevice(2,this.state)
   }
   setMode = (mode)=>{
-
+    this.setState({mode:mode})
+    operationDevice(1,this.state)
   }
   tempUp = ()=>{
     let temp = this.state.temp;
     if (temp<32) {
       temp++;
       this.setState({temp:temp})
+      operationDevice(3,this.state)
     }
     }
     tempDown = ()=>{
@@ -86,6 +91,7 @@ class LoginScreen extends React.Component {
       if (temp>16) {
         temp--;
         this.setState({temp:temp})
+        operationDevice(3,this.state)
       }
     }
     // 设置当前房间
@@ -95,16 +101,27 @@ class LoginScreen extends React.Component {
         this.setState({currentRoomId:room_id})
         const api = 'set'
         let params = {token:this.state.token,sign_id:this.state.sign_id}
-        operationDevice('set',room_id,params).then((responseJson)=>{
-          console.log(responseJson)
+        setRoom('set',room_id,params).then((res)=>{
+          this.setState({temp:res.data.temp,power:res.data.power,mode:res.data.mode,wind:res.data.wind})
+          console.log(res)
         })
   }
   render() {
 
     const { params } = this.props.navigation.state;
     let temp = this.state.temp;
-    let powerOff = !this.state.power;
-    let powerOn = this.state.power;
+    let powerOff = this.state.power === 0?true:false;
+    let powerOn = this.state.power === 1?true:false;
+    let autoWind = this.state.wind === 0?true:false;
+    let lowWind = this.state.wind === 1?true:false;
+    let midWind = this.state.wind === 2?true:false;
+    let highWind = this.state.wind === 3?true:false;
+    let hot = this.state.mode === 0?true:false;
+    let cold = this.state.mode === 1?true:false;
+    let dry = this.state.mode === 2?true:false;
+    let wind = this.state.mode === 3?true:false;
+    let floorHot = this.state.mode === 4?true:false;
+    let warmHot = this.state.mode === 5?true:false;
 
     return (
       <MenuContext>
@@ -169,7 +186,7 @@ class LoginScreen extends React.Component {
                         checkedImage={require('../img/radioOn.png')}
                         uncheckedImage={require('../img/radioOff.png')}
                         onChange={this.setWind(0)}
-                        checked={powerOn}
+                        checked={autoWind}
                       />
                       <CheckBox
                         label='低速'
@@ -177,7 +194,7 @@ class LoginScreen extends React.Component {
                         uncheckedImage={require('../img/radioOff.png')}
                         labelStyle={{color:'#FFF'}}
                         onChange={this.setWind(1)}
-                        checked={powerOff}
+                        checked={lowWind}
                       />
                       <CheckBox
                         label='中速'
@@ -185,7 +202,7 @@ class LoginScreen extends React.Component {
                         uncheckedImage={require('../img/radioOff.png')}
                         labelStyle={{color:'#FFF'}}
                         onChange={this.setWind(2)}
-                        checked={powerOff}
+                        checked={midWind}
                       />
                       <CheckBox
                         label='高速'
@@ -193,7 +210,7 @@ class LoginScreen extends React.Component {
                         uncheckedImage={require('../img/radioOff.png')}
                         labelStyle={{color:'#FFF'}}
                         onChange={this.setWind(3)}
-                        checked={powerOff}
+                        checked={highWind}
                       />
                 </View>
                 {/* 风速 */}
@@ -201,36 +218,52 @@ class LoginScreen extends React.Component {
                 {/* 模式 */}
                 <View style={styles.bottomViewContainer}>
                       <CheckBox
-                        label='制冷'
+                        label='制热'
                         labelStyle={{color:'#FFF'}}
                         checkedImage={require('../img/radioOn.png')}
                         uncheckedImage={require('../img/radioOff.png')}
                         onChange={this.setMode(0)}
-                        checked={powerOn}
+                        checked={hot}
                       />
                       <CheckBox
-                        label='制热'
+                        label='制冷'
                         checkedImage={require('../img/radioOn.png')}
                         uncheckedImage={require('../img/radioOff.png')}
                         labelStyle={{color:'#FFF'}}
                         onChange={this.setMode(1)}
-                        checked={powerOff}
-                      />
-                      <CheckBox
-                        label='新风'
-                        checkedImage={require('../img/radioOn.png')}
-                        uncheckedImage={require('../img/radioOff.png')}
-                        labelStyle={{color:'#FFF'}}
-                        onChange={this.setMode(2)}
-                        checked={powerOff}
+                        checked={cold}
                       />
                       <CheckBox
                         label='除湿'
                         checkedImage={require('../img/radioOn.png')}
                         uncheckedImage={require('../img/radioOff.png')}
                         labelStyle={{color:'#FFF'}}
+                        onChange={this.setMode(2)}
+                        checked={dry}
+                      />
+                      <CheckBox
+                        label='通风'
+                        checkedImage={require('../img/radioOn.png')}
+                        uncheckedImage={require('../img/radioOff.png')}
+                        labelStyle={{color:'#FFF'}}
                         onChange={this.setMode(3)}
-                        checked={powerOff}
+                        checked={wind}
+                      />
+                      <CheckBox
+                        label='地暖'
+                        checkedImage={require('../img/radioOn.png')}
+                        uncheckedImage={require('../img/radioOff.png')}
+                        labelStyle={{color:'#FFF'}}
+                        onChange={this.setMode(4)}
+                        checked={floorHot}
+                      />
+                      <CheckBox
+                        label='热暖'
+                        checkedImage={require('../img/radioOn.png')}
+                        uncheckedImage={require('../img/radioOff.png')}
+                        labelStyle={{color:'#FFF'}}
+                        onChange={this.setMode(5)}
+                        checked={warmHot}
                       />
                 </View>
                 {/* 模式 */}
