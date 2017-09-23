@@ -38,6 +38,18 @@
 		4F305CDEAB254F3280D948F0 /* MaterialCommunityIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 53F0DD082D70428498C878C6 /* MaterialCommunityIcons.ttf */; };
 		5C6ED81B024B4690B0EBE233 /* Ionicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = ACBC3E687BFB4AC7AB3B7A11 /* Ionicons.ttf */; };
 		69AD167412874A2DB7481EE2 /* Foundation.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2FB3ADB085334BABAA8D4473 /* Foundation.ttf */; };
+		7A127C0D1F764BAB00A669AF /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A127C0C1F764BAB00A669AF /* libz.tbd */; };
+		7A127C0E1F764BCF00A669AF /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A127C0C1F764BAB00A669AF /* libz.tbd */; };
+		7A127C101F764BDA00A669AF /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A127C0F1F764BDA00A669AF /* libz.tbd */; };
+		7A127C111F764BDF00A669AF /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A127C0F1F764BDA00A669AF /* libz.tbd */; };
+		7A127C131F764C1C00A669AF /* libstdc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A127C121F764C1C00A669AF /* libstdc++.tbd */; };
+		7A127C141F764C2200A669AF /* libstdc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A127C121F764C1C00A669AF /* libstdc++.tbd */; };
+		7A127C231F764CE100A669AF /* MOBFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A127C201F764CE100A669AF /* MOBFoundation.framework */; };
+		7A127C241F764CE100A669AF /* MOBFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A127C201F764CE100A669AF /* MOBFoundation.framework */; };
+		7A127C251F764CE100A669AF /* SMS_SDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A127C221F764CE100A669AF /* SMS_SDK.framework */; };
+		7A127C261F764CE100A669AF /* SMS_SDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7A127C221F764CE100A669AF /* SMS_SDK.framework */; };
+		7A127C291F765AA400A669AF /* RCTMobSMS.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A127C281F765AA400A669AF /* RCTMobSMS.m */; };
+		7A127C2A1F765AA400A669AF /* RCTMobSMS.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A127C281F765AA400A669AF /* RCTMobSMS.m */; };
 		7AF424361F7158CB00D271A4 /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 		9BCAE446266F4C7CAD890618 /* EvilIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8990589F115A452BB0697A4D /* EvilIcons.ttf */; };
@@ -321,6 +333,13 @@
 		5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAnimation.xcodeproj; path = "../node_modules/react-native/Libraries/NativeAnimation/RCTAnimation.xcodeproj"; sourceTree = "<group>"; };
 		779D2C5F1E6A43B887195807 /* MaterialIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialIcons.ttf"; sourceTree = "<group>"; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
+		7A127C0C1F764BAB00A669AF /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		7A127C0F1F764BDA00A669AF /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS10.2.sdk/usr/lib/libz.tbd; sourceTree = DEVELOPER_DIR; };
+		7A127C121F764C1C00A669AF /* libstdc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.tbd"; path = "usr/lib/libstdc++.tbd"; sourceTree = SDKROOT; };
+		7A127C201F764CE100A669AF /* MOBFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MOBFoundation.framework; sourceTree = "<group>"; };
+		7A127C221F764CE100A669AF /* SMS_SDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SMS_SDK.framework; sourceTree = "<group>"; };
+		7A127C271F765A8A00A669AF /* RCTMobSMS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCTMobSMS.h; sourceTree = "<group>"; };
+		7A127C281F765AA400A669AF /* RCTMobSMS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCTMobSMS.m; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
 		8990589F115A452BB0697A4D /* EvilIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = EvilIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf"; sourceTree = "<group>"; };
 		8C75FC4C21DA441AB56D2D85 /* RNVectorIcons.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNVectorIcons.xcodeproj; path = "../node_modules/react-native-vector-icons/RNVectorIcons.xcodeproj"; sourceTree = "<group>"; };
@@ -338,6 +357,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7A127C241F764CE100A669AF /* MOBFoundation.framework in Frameworks */,
+				7A127C141F764C2200A669AF /* libstdc++.tbd in Frameworks */,
+				7A127C261F764CE100A669AF /* SMS_SDK.framework in Frameworks */,
+				7A127C0E1F764BCF00A669AF /* libz.tbd in Frameworks */,
 				140ED2AC1D01E1AD002B40FF /* libReact.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -346,12 +369,16 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7A127C131F764C1C00A669AF /* libstdc++.tbd in Frameworks */,
+				7A127C0D1F764BAB00A669AF /* libz.tbd in Frameworks */,
 				ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */,
 				7AF424361F7158CB00D271A4 /* libRCTAnimation.a in Frameworks */,
 				146834051AC3E58100842450 /* libReact.a in Frameworks */,
+				7A127C251F764CE100A669AF /* SMS_SDK.framework in Frameworks */,
 				00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */,
 				00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */,
 				00C302E81ABCBA2D00DB3ED1 /* libRCTImage.a in Frameworks */,
+				7A127C231F764CE100A669AF /* MOBFoundation.framework in Frameworks */,
 				133E29F31AD74F7200F7D852 /* libRCTLinking.a in Frameworks */,
 				00C302E91ABCBA2D00DB3ED1 /* libRCTNetwork.a in Frameworks */,
 				139105C61AF99C1200B5F7CC /* libRCTSettings.a in Frameworks */,
@@ -366,6 +393,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7A127C101F764BDA00A669AF /* libz.tbd in Frameworks */,
 				2D02E4C91E0B4AEC006451C7 /* libReact.a in Frameworks */,
 				2D02E4C21E0B4AEC006451C7 /* libRCTAnimation.a in Frameworks */,
 				2D02E4C31E0B4AEC006451C7 /* libRCTImage-tvOS.a in Frameworks */,
@@ -381,6 +409,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7A127C111F764BDF00A669AF /* libz.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -474,6 +503,8 @@
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				13B07FB11A68108700A75B9A /* LaunchScreen.xib */,
 				13B07FB71A68108700A75B9A /* main.m */,
+				7A127C271F765A8A00A669AF /* RCTMobSMS.h */,
+				7A127C281F765AA400A669AF /* RCTMobSMS.m */,
 			);
 			name = SWCRN;
 			sourceTree = "<group>";
@@ -513,6 +544,41 @@
 				3DAD3E881DF850E9000B6D8A /* libRCTLinking-tvOS.a */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		7A127C0B1F764BAB00A669AF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7A127C121F764C1C00A669AF /* libstdc++.tbd */,
+				7A127C0F1F764BDA00A669AF /* libz.tbd */,
+				7A127C0C1F764BAB00A669AF /* libz.tbd */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7A127C1E1F764CE100A669AF /* SDK */ = {
+			isa = PBXGroup;
+			children = (
+				7A127C1F1F764CE100A669AF /* Required */,
+				7A127C211F764CE100A669AF /* SMSSDK */,
+			);
+			path = SDK;
+			sourceTree = "<group>";
+		};
+		7A127C1F1F764CE100A669AF /* Required */ = {
+			isa = PBXGroup;
+			children = (
+				7A127C201F764CE100A669AF /* MOBFoundation.framework */,
+			);
+			path = Required;
+			sourceTree = "<group>";
+		};
+		7A127C211F764CE100A669AF /* SMSSDK */ = {
+			isa = PBXGroup;
+			children = (
+				7A127C221F764CE100A669AF /* SMS_SDK.framework */,
+			);
+			path = SMSSDK;
 			sourceTree = "<group>";
 		};
 		7AA68F961F6E54BD00F0DAF4 /* Products */ = {
@@ -555,11 +621,13 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				7A127C1E1F764CE100A669AF /* SDK */,
 				13B07FAE1A68108700A75B9A /* SWCRN */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* SWCRNTests */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				FFEC46776D5947C6AE3BF250 /* Resources */,
+				7A127C0B1F764BAB00A669AF /* Frameworks */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -1090,6 +1158,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7A127C2A1F765AA400A669AF /* RCTMobSMS.m in Sources */,
 				00E356F31AD99517003FC87E /* SWCRNTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1100,6 +1169,7 @@
 			files = (
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
+				7A127C291F765AA400A669AF /* RCTMobSMS.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1153,6 +1223,11 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = F5SWP6YZCB;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/SDK/Required",
+					"$(PROJECT_DIR)/SDK/SMSSDK",
+				);
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -1184,6 +1259,11 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
 				DEVELOPMENT_TEAM = F5SWP6YZCB;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/SDK/Required",
+					"$(PROJECT_DIR)/SDK/SMSSDK",
+				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
@@ -1212,6 +1292,11 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = F5SWP6YZCB;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/SDK/Required",
+					"$(PROJECT_DIR)/SDK/SMSSDK",
+				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
@@ -1235,6 +1320,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = F5SWP6YZCB;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/SDK/Required",
+					"$(PROJECT_DIR)/SDK/SMSSDK",
+				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
@@ -1415,6 +1505,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = F5SWP6YZCB;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/SDK/Required",
+					"$(PROJECT_DIR)/SDK/SMSSDK",
+				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
@@ -1438,6 +1533,11 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
 				DEVELOPMENT_TEAM = F5SWP6YZCB;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/SDK/Required",
+					"$(PROJECT_DIR)/SDK/SMSSDK",
+				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-vector-icons/RNVectorIconsManager",
