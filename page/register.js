@@ -33,9 +33,14 @@ export default class RegisterScreen extends React.Component {
    this.state = {
      username: '',
      password:'',
+     code:'获取验证码',
      isPassword:true,
      loading: false
   };
+  }
+
+  sendCode=()=>{
+    
   }
 
   makeRegister=()=>{
@@ -57,16 +62,31 @@ export default class RegisterScreen extends React.Component {
 
       </View>
 
-      <View style={styles.textInputContianer}>
-      <TextInput
-        style = {{flex:1,marginLeft:10}}
-         value={this.state.password}
-        password = {this.state.isPassword}
-        placeholder="请输入密码"
-        onChangeText={(password) => this.setState({password})}
-      />
+      <View style={{
+          flexDirection:'row',
+          marginTop:10,
+          marginLeft:15}}>
+        <View style={{
+          width:screenWidth -130,
+          height:40,
+          flexDirection:'row',
+          alignItems: 'center',
+          borderRadius:5,
+          borderColor:'#272B3C',
+          borderWidth:0.5,
+          }}>
+        <TextInput
+          style = {{flex:1,marginLeft:10}}
+           value={this.state.password}
+          password = {this.state.isPassword}
+          placeholder="请输入验证码"
+          onChangeText={(password) => this.setState({password})}
+        />
+        </View>
 
+        <Button onPress={this.sendCode} title={this.state.code} style={{width:100,backgroundColor:'#44BBA3'}}></Button>
       </View>
+
       {/** 用于与登录相关的按钮 */}
           {/**立即注册*/}
           <TouchableHighlight onPress={this.makeRegister} style={styles.loginByPhoneBtnContianer}>
