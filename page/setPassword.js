@@ -13,8 +13,8 @@ import {
   NativeModules,
   AsyncStorage,
   TouchableHighlight,
-  Alert,
   ActivityIndicator,
+  Alert,
   Platform,
 } from 'react-native';
 import AndroidSMS from './module/AndroidSMSModule'
@@ -22,8 +22,7 @@ import { EventEmitter } from 'events';
 import {doPost} from '../net/net'
 import {Headers,fetch} from 'fetch'
 import { List, ListItem, SearchBar } from "react-native-elements";
-import { StackNavigator ,TabNavigator} from 'react-navigation';
-import {SetPasswordScreen} from './setPassword'
+import { StackNavigator ,TabNavigator,NavigationActions} from 'react-navigation';
 
 import Storage from 'react-native-storage';
 
@@ -39,15 +38,16 @@ const smsNativeEvent = new NativeEventEmitter(MobSMS);  //创建自定义事件�
 
 let smsListener = smsNativeEvent.addListener('mobSMSEvent', (resp) => emitter.emit('commitVerificationCode.Resp',resp));  //对应了原生端的名字
 
-export default class RegisterScreen extends React.Component {
+export default class SetPasswordScreen extends React.Component {
   static navigationOptions = {
-    title:'注册',
+    title:'设置密码',
   };
 
   constructor(props){
     super(props);
    this.state = {
-     username: '',
+     username:'',
+     checkPassword: '',
      password:'',
      code:'获取验证码',
      isPassword:true,
@@ -55,61 +55,34 @@ export default class RegisterScreen extends React.Component {
    };
   }
 
-  componentDidMount(){
-    if (Platform.OS == 'android') {
-    AndroidSMS.registerSMS()
-    }
-  }
-  componentWillUnmount(){
-    if (Platform.OS == 'android') {
-      AndroidSMS.unRegisterSMS()
-    }else {
-      smsListener.remove();
-    }
-  }
-
-  sendCode=()=>{
-    var params = {
-        "phoneNum": this.state.username,
-        "option": get,
-    };
-
-    doPost('user/registOption',params)//判断用户注册情况
-    .then((responseJson) => {
-      console.log(responseJson);
-      if(responseJson.status === 1){//用户未注册
-        if (Platform.OS == 'android') {
-          AndroidSMS.sendSMS('86',this.state.username)//Android发送验证码
-        }else if(Platform.OS == 'ios'){
-          MobSMS.getVerificationCodeByMethod(0,this.state.username,'86',() => {});  //IOS发送验证码
-        }
-      }else {
-        alert(responseJson.message)
-      }
-
-    })
-    .catch((error) => {
-      console.error(error);
-    });
-
-  }
-
   makeRegister=()=>{
-     const { navigate } = this.props.navigation;
-    // if (Platform.OS == 'android') {
-    //   AndroidSMS.confirmSMS('86',this.state.username,this.state.password)
-    // }else if(Platform.OS == 'ios'){
-    //     MobSMS.commitVerificationCode(this.state.password,this.state.username,'86',() => {});
-    //     emitter.once('commitVerificationCode.Resp', (resp) => {
-    //         if (resp.code === 0) {
-    //           Navigate('SetPasswordScreen')
-    //         }else {
-    //           Alert('验证码错误')
-    //         }
-    //     });
-    // //
-    // }
-    navigate('SetPasswordScreen')
+
+    if (this.state.password === '') {
+      Alert.alert('密码不能为空')
+    }else if (this.state.password === this.state.checkPassword) {
+      var params = {
+        phoneNum:this.state.username,
+        option:'regist',
+        password:'password'
+      }
+      doPost('user/registOption',params)
+      .then((responseJson) => {
+        console.log(responseJson);
+        if(responseJson.status === 1){
+          this.props.navigation.goBack('LoginScreen');
+        }else {
+          Alert.alert(responseJson.message)
+        }
+
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+
+    }else {
+      Alert.alert('密码输入不一致')
+    }
+
   }
 
   render() {
@@ -120,42 +93,26 @@ export default class RegisterScreen extends React.Component {
       <View style={styles.textInputContianer}>
       <TextInput
       style = {{flex:1,marginLeft:10}}
-        placeholder="请输入账号"
-        value={this.state.username}
-        onChangeText={(username) => this.setState({username:username})}
+        placeholder="请输入密码"
+        value={this.state.password}
+        onChangeText={(password) => this.setState({password:password})}
       />
 
       </View>
 
-      <View style={{
-          flexDirection:'row',
-          marginTop:10,
-          marginLeft:15}}>
-        <View style={{
-          width:screenWidth -130,
-          height:40,
-          flexDirection:'row',
-          alignItems: 'center',
-          borderRadius:5,
-          borderColor:'#272B3C',
-          borderWidth:0.5,
-          }}>
-        <TextInput
-          style = {{flex:1,marginLeft:10}}
-           value={this.state.password}
-          password = {this.state.isPassword}
-          placeholder="请输入验证码"
-          onChangeText={(password) => this.setState({password})}
-        />
-        </View>
-
-        <Button onPress={this.sendCode} title={this.state.code} style={{width:100,backgroundColor:'#44BBA3'}}></Button>
+      <View style={styles.textInputContianer}>
+      <TextInput
+      style = {{flex:1,marginLeft:10}}
+        placeholder="请确认密码"
+        value={this.state.checkPassword}
+        onChangeText={(checkPassword) => this.setState({checkPassword:checkPassword})}
+      />
       </View>
 
       {/** 用于与登录相关的按钮 */}
           {/**立即注册*/}
           <TouchableHighlight onPress={this.makeRegister} style={styles.loginByPhoneBtnContianer}>
-              <Text style={styles.loginByPhoneBtnTitle}>确认</Text>
+              <Text style={styles.loginByPhoneBtnTitle}>立即注册</Text>
           </TouchableHighlight>
 
   </View>

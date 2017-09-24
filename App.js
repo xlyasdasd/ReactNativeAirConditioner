@@ -20,8 +20,10 @@ import { StackNavigator ,TabNavigator} from 'react-navigation';
 import Control from './page/control';
 import DeviceList from './page/deviceList';
 import Register from './page/register';
+import SetPasswordScreen from './page/set'
 import Storage from 'react-native-storage';
 import {saveUser,getUser} from './storage/SWCStorage.js'
+
 var Dimensions = require('Dimensions');
 //获取屏幕宽度
 var screenWidth = Dimensions.get('window').width;
@@ -252,7 +254,8 @@ const HomeNavi = StackNavigator({
   LoginScreen: { screen: LoginScreen },
   DeviceList:{screen:DeviceList},
   Register:{screen:Register},
-  ControlScreen:{screen:Control}
+  ControlScreen:{screen:Control},
+  SetPasswordScreen:{screen:SetPasswordScreen}
 });
 export default HomeNavi;
 

@@ -26,6 +26,22 @@
 		69AD167412874A2DB7481EE2 /* Foundation.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2FB3ADB085334BABAA8D4473 /* Foundation.ttf */; };
 		793245BCF196E4CDF614CB13 /* libPods-SWCRN.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AB7EECB04F544D7082F95057 /* libPods-SWCRN.a */; };
 		7A127C291F765AA400A669AF /* RCTMobSMS.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A127C281F765AA400A669AF /* RCTMobSMS.m */; };
+		7A1A96D41F77BF34008042AC /* aircondition.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A1A96BA1F77BF34008042AC /* aircondition.png */; };
+		7A1A96D51F77BF34008042AC /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A1A96BB1F77BF34008042AC /* logo.png */; };
+		7A1A96D61F77BF34008042AC /* navicon_add.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A1A96BC1F77BF34008042AC /* navicon_add.png */; };
+		7A1A96D71F77BF34008042AC /* radioOff.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A1A96BD1F77BF34008042AC /* radioOff.png */; };
+		7A1A96D81F77BF34008042AC /* radioOn.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A1A96BE1F77BF34008042AC /* radioOn.png */; };
+		7A1A96D91F77BF34008042AC /* cb_disabled.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A1A96C11F77BF34008042AC /* cb_disabled.png */; };
+		7A1A96DA1F77BF34008042AC /* cb_enabled.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A1A96C21F77BF34008042AC /* cb_enabled.png */; };
+		7A1A96DB1F77BF34008042AC /* bell.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A1A96C71F77BF34008042AC /* bell.png */; };
+		7A1A96DC1F77BF34008042AC /* heart.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A1A96C81F77BF34008042AC /* heart.png */; };
+		7A1A96DD1F77BF34008042AC /* rocket.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A1A96C91F77BF34008042AC /* rocket.png */; };
+		7A1A96DE1F77BF34008042AC /* star.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A1A96CA1F77BF34008042AC /* star.png */; };
+		7A1A96DF1F77BF34008042AC /* back-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A1A96CF1F77BF34008042AC /* back-icon.png */; };
+		7A1A96E01F77BF34008042AC /* back-icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A1A96D01F77BF34008042AC /* back-icon@2x.png */; };
+		7A1A96E11F77BF34008042AC /* back-icon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A1A96D11F77BF34008042AC /* back-icon@3x.png */; };
+		7A1A96E21F77BF34008042AC /* main.jsbundle in Resources */ = {isa = PBXBuildFile; fileRef = 7A1A96D21F77BF34008042AC /* main.jsbundle */; };
+		7A1A96E31F77BF34008042AC /* main.jsbundle.meta in Resources */ = {isa = PBXBuildFile; fileRef = 7A1A96D31F77BF34008042AC /* main.jsbundle.meta */; };
 		7AF424361F7158CB00D271A4 /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 		9BCAE446266F4C7CAD890618 /* EvilIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8990589F115A452BB0697A4D /* EvilIcons.ttf */; };
@@ -267,7 +283,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		008F07F21AC5B25A0029DE68 /* main.jsbundle */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
 		00C302A71ABCB8CE00DB3ED1 /* RCTActionSheet.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTActionSheet.xcodeproj; path = "../node_modules/react-native/Libraries/ActionSheetIOS/RCTActionSheet.xcodeproj"; sourceTree = "<group>"; };
 		00C302B51ABCB90400DB3ED1 /* RCTGeolocation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTGeolocation.xcodeproj; path = "../node_modules/react-native/Libraries/Geolocation/RCTGeolocation.xcodeproj"; sourceTree = "<group>"; };
 		00C302BB1ABCB91800DB3ED1 /* RCTImage.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTImage.xcodeproj; path = "../node_modules/react-native/Libraries/Image/RCTImage.xcodeproj"; sourceTree = "<group>"; };
@@ -302,6 +317,22 @@
 		7A127C121F764C1C00A669AF /* libstdc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.tbd"; path = "usr/lib/libstdc++.tbd"; sourceTree = SDKROOT; };
 		7A127C271F765A8A00A669AF /* RCTMobSMS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RCTMobSMS.h; sourceTree = "<group>"; };
 		7A127C281F765AA400A669AF /* RCTMobSMS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RCTMobSMS.m; sourceTree = "<group>"; };
+		7A1A96BA1F77BF34008042AC /* aircondition.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = aircondition.png; sourceTree = "<group>"; };
+		7A1A96BB1F77BF34008042AC /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
+		7A1A96BC1F77BF34008042AC /* navicon_add.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = navicon_add.png; sourceTree = "<group>"; };
+		7A1A96BD1F77BF34008042AC /* radioOff.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = radioOff.png; sourceTree = "<group>"; };
+		7A1A96BE1F77BF34008042AC /* radioOn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = radioOn.png; sourceTree = "<group>"; };
+		7A1A96C11F77BF34008042AC /* cb_disabled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cb_disabled.png; sourceTree = "<group>"; };
+		7A1A96C21F77BF34008042AC /* cb_enabled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cb_enabled.png; sourceTree = "<group>"; };
+		7A1A96C71F77BF34008042AC /* bell.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bell.png; sourceTree = "<group>"; };
+		7A1A96C81F77BF34008042AC /* heart.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = heart.png; sourceTree = "<group>"; };
+		7A1A96C91F77BF34008042AC /* rocket.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = rocket.png; sourceTree = "<group>"; };
+		7A1A96CA1F77BF34008042AC /* star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = star.png; sourceTree = "<group>"; };
+		7A1A96CF1F77BF34008042AC /* back-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back-icon.png"; sourceTree = "<group>"; };
+		7A1A96D01F77BF34008042AC /* back-icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back-icon@2x.png"; sourceTree = "<group>"; };
+		7A1A96D11F77BF34008042AC /* back-icon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "back-icon@3x.png"; sourceTree = "<group>"; };
+		7A1A96D21F77BF34008042AC /* main.jsbundle */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
+		7A1A96D31F77BF34008042AC /* main.jsbundle.meta */ = {isa = PBXFileReference; lastKnownFileType = file; path = main.jsbundle.meta; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
 		8439738E95AF65AA24091064 /* Pods-SWCRNTests.stagging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SWCRNTests.stagging.xcconfig"; path = "Pods/Target Support Files/Pods-SWCRNTests/Pods-SWCRNTests.stagging.xcconfig"; sourceTree = "<group>"; };
 		8990589F115A452BB0697A4D /* EvilIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = EvilIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf"; sourceTree = "<group>"; };
@@ -422,7 +453,9 @@
 		13B07FAE1A68108700A75B9A /* SWCRN */ = {
 			isa = PBXGroup;
 			children = (
-				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
+				7A1A96B81F77BF34008042AC /* assets */,
+				7A1A96D21F77BF34008042AC /* main.jsbundle */,
+				7A1A96D31F77BF34008042AC /* main.jsbundle.meta */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
@@ -495,6 +528,115 @@
 				36C34A1C64CD6C467F7AAA34 /* libPods-SWCRNTests.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7A1A96B81F77BF34008042AC /* assets */ = {
+			isa = PBXGroup;
+			children = (
+				7A1A96B91F77BF34008042AC /* img */,
+				7A1A96BF1F77BF34008042AC /* node_modules */,
+			);
+			path = assets;
+			sourceTree = "<group>";
+		};
+		7A1A96B91F77BF34008042AC /* img */ = {
+			isa = PBXGroup;
+			children = (
+				7A1A96BA1F77BF34008042AC /* aircondition.png */,
+				7A1A96BB1F77BF34008042AC /* logo.png */,
+				7A1A96BC1F77BF34008042AC /* navicon_add.png */,
+				7A1A96BD1F77BF34008042AC /* radioOff.png */,
+				7A1A96BE1F77BF34008042AC /* radioOn.png */,
+			);
+			path = img;
+			sourceTree = "<group>";
+		};
+		7A1A96BF1F77BF34008042AC /* node_modules */ = {
+			isa = PBXGroup;
+			children = (
+				7A1A96C01F77BF34008042AC /* react-native-checkbox */,
+				7A1A96C31F77BF34008042AC /* react-native-elements */,
+				7A1A96CB1F77BF34008042AC /* react-navigation */,
+			);
+			path = node_modules;
+			sourceTree = "<group>";
+		};
+		7A1A96C01F77BF34008042AC /* react-native-checkbox */ = {
+			isa = PBXGroup;
+			children = (
+				7A1A96C11F77BF34008042AC /* cb_disabled.png */,
+				7A1A96C21F77BF34008042AC /* cb_enabled.png */,
+			);
+			path = "react-native-checkbox";
+			sourceTree = "<group>";
+		};
+		7A1A96C31F77BF34008042AC /* react-native-elements */ = {
+			isa = PBXGroup;
+			children = (
+				7A1A96C41F77BF34008042AC /* src */,
+			);
+			path = "react-native-elements";
+			sourceTree = "<group>";
+		};
+		7A1A96C41F77BF34008042AC /* src */ = {
+			isa = PBXGroup;
+			children = (
+				7A1A96C51F77BF34008042AC /* rating */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		7A1A96C51F77BF34008042AC /* rating */ = {
+			isa = PBXGroup;
+			children = (
+				7A1A96C61F77BF34008042AC /* images */,
+			);
+			path = rating;
+			sourceTree = "<group>";
+		};
+		7A1A96C61F77BF34008042AC /* images */ = {
+			isa = PBXGroup;
+			children = (
+				7A1A96C71F77BF34008042AC /* bell.png */,
+				7A1A96C81F77BF34008042AC /* heart.png */,
+				7A1A96C91F77BF34008042AC /* rocket.png */,
+				7A1A96CA1F77BF34008042AC /* star.png */,
+			);
+			path = images;
+			sourceTree = "<group>";
+		};
+		7A1A96CB1F77BF34008042AC /* react-navigation */ = {
+			isa = PBXGroup;
+			children = (
+				7A1A96CC1F77BF34008042AC /* src */,
+			);
+			path = "react-navigation";
+			sourceTree = "<group>";
+		};
+		7A1A96CC1F77BF34008042AC /* src */ = {
+			isa = PBXGroup;
+			children = (
+				7A1A96CD1F77BF34008042AC /* views */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		7A1A96CD1F77BF34008042AC /* views */ = {
+			isa = PBXGroup;
+			children = (
+				7A1A96CE1F77BF34008042AC /* assets */,
+			);
+			path = views;
+			sourceTree = "<group>";
+		};
+		7A1A96CE1F77BF34008042AC /* assets */ = {
+			isa = PBXGroup;
+			children = (
+				7A1A96CF1F77BF34008042AC /* back-icon.png */,
+				7A1A96D01F77BF34008042AC /* back-icon@2x.png */,
+				7A1A96D11F77BF34008042AC /* back-icon@3x.png */,
+			);
+			path = assets;
 			sourceTree = "<group>";
 		};
 		7AA68F961F6E54BD00F0DAF4 /* Products */ = {
@@ -929,15 +1071,31 @@
 			files = (
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
+				7A1A96E11F77BF34008042AC /* back-icon@3x.png in Resources */,
+				7A1A96DD1F77BF34008042AC /* rocket.png in Resources */,
+				7A1A96D41F77BF34008042AC /* aircondition.png in Resources */,
 				F3ADE7A28BB244D6829AFB0B /* Entypo.ttf in Resources */,
+				7A1A96DE1F77BF34008042AC /* star.png in Resources */,
+				7A1A96E01F77BF34008042AC /* back-icon@2x.png in Resources */,
 				9BCAE446266F4C7CAD890618 /* EvilIcons.ttf in Resources */,
 				EC89C3D4F8EE4429806BB26A /* Feather.ttf in Resources */,
+				7A1A96E31F77BF34008042AC /* main.jsbundle.meta in Resources */,
 				B6AC98ECE5CB497F8BDD332B /* FontAwesome.ttf in Resources */,
 				69AD167412874A2DB7481EE2 /* Foundation.ttf in Resources */,
+				7A1A96D61F77BF34008042AC /* navicon_add.png in Resources */,
 				5C6ED81B024B4690B0EBE233 /* Ionicons.ttf in Resources */,
 				4F305CDEAB254F3280D948F0 /* MaterialCommunityIcons.ttf in Resources */,
 				FCCC0D921A2848D6BBDBFE62 /* MaterialIcons.ttf in Resources */,
+				7A1A96DC1F77BF34008042AC /* heart.png in Resources */,
+				7A1A96D81F77BF34008042AC /* radioOn.png in Resources */,
+				7A1A96D51F77BF34008042AC /* logo.png in Resources */,
+				7A1A96E21F77BF34008042AC /* main.jsbundle in Resources */,
+				7A1A96DB1F77BF34008042AC /* bell.png in Resources */,
+				7A1A96D71F77BF34008042AC /* radioOff.png in Resources */,
+				7A1A96DF1F77BF34008042AC /* back-icon.png in Resources */,
 				CB81B40B19FA4DC882A343D4 /* Octicons.ttf in Resources */,
+				7A1A96DA1F77BF34008042AC /* cb_enabled.png in Resources */,
+				7A1A96D91F77BF34008042AC /* cb_disabled.png in Resources */,
 				A687E93E1C5D423A9E4882B9 /* SimpleLineIcons.ttf in Resources */,
 				1781F168871D47E0887FFE9C /* Zocial.ttf in Resources */,
 			);
