@@ -14,7 +14,9 @@ import {
   AsyncStorage,
   TouchableHighlight,
   ActivityIndicator,
+  Platform,
 } from 'react-native';
+import AndroidSMS from './module/AndroidSMSModule'
 import { EventEmitter } from 'events';
 import {doPost} from '../net/net'
 import {Headers,fetch} from 'fetch'
@@ -41,6 +43,7 @@ export default class RegisterScreen extends React.Component {
   static navigationOptions = {
     title:'注册',
   };
+
   constructor(props){
     super(props);
    this.state = {
@@ -52,15 +55,30 @@ export default class RegisterScreen extends React.Component {
    };
   }
 
+  componentDidMount(){
+    if (Platform.OS == 'android') {
+    AndroidSMS.registerSMS()
+    }
+  }
+  componentWillUnmount(){
+    if (Platform.OS == 'android') {
+      AndroidSMS.unRegisterSMS()
+    }
+  }
+
   sendCode=()=>{
-    new Promise((resolve, reject) => {
-    MobSMS.getVerificationCodeByMethod(0,this.state.username,'86',() => {});
-    emitter.once('getVerificationCode.Resp', (resp) => {
 
+    if (Platform.OS == 'android') {
+      AndroidSMS.sendSMS('86',this.state.username)
+    }else if(Platform.OS == 'ios'){
+      new Promise((resolve, reject) => {
+      MobSMS.getVerificationCodeByMethod(0,this.state.username,'86',() => {});
+      emitter.once('getVerificationCode.Resp', (resp) => {
 
-      resolve(resp)
-    });
-  });
+        resolve(resp)
+      });
+    });          //
+    }
   }
 
   makeRegister=()=>{

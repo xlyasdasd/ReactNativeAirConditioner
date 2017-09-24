@@ -68,3 +68,10 @@
 -dontwarn java.nio.file.*
 -dontwarn org.codehaus.mojo.animal_sniffer.IgnoreJRERequirement
 -dontwarn okio.**
+
+# SMSSDK
+-dontwarn com.mob.**
+-keep class com.mob.**{*;}
+
+-dontwarn cn.smssdk.**
+-keep class cn.smssdk.**{*;}
