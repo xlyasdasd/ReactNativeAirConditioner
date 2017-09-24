@@ -35,14 +35,18 @@ RCT_EXPORT_MODULE();
 RCT_EXPORT_METHOD(getVerificationCodeByMethod:(NSInteger)method
                   phoneNumber:(NSString *)phoneNumber
                   zone:(NSString *)zone
-                  customIdentifier:(NSString *)customIdentifier
                   //                  result:(RCTResponseErrorBlock)result) {
                   callback:(RCTResponseErrorBlock)callback) {
+  // 打印OC对象
+  NSString *string = @"hello world";
+  NSLog(@"%@", string);
+  NSLog(@"%@", phoneNumber);
   
   [SMSSDK getVerificationCodeByMethod:SMSGetCodeMethodSMS
                           phoneNumber:phoneNumber
                                  zone:zone
                                  result:^(NSError *error) {
+
                                  NSMutableDictionary *body = [[NSMutableDictionary alloc] init];
                                  if (error == NULL) {
                                    body[@"code"] = @"0";

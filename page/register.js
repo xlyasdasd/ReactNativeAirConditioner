@@ -9,10 +9,13 @@ import {
   Image,
   TextInput,
   StyleSheet,
+  NativeEventEmitter,
+  NativeModules,
   AsyncStorage,
   TouchableHighlight,
   ActivityIndicator,
 } from 'react-native';
+import { EventEmitter } from 'events';
 import {doPost} from '../net/net'
 import {Headers,fetch} from 'fetch'
 import { List, ListItem, SearchBar } from "react-native-elements";
@@ -23,6 +26,16 @@ import Storage from 'react-native-storage';
 var Dimensions = require('Dimensions');
 //获取屏幕宽度
 var screenWidth = Dimensions.get('window').width;
+
+const {MobSMS} = NativeModules;
+// Event emitter to dispatch request and response from WeChat.
+const emitter = new EventEmitter();
+
+const smsNativeEvent = new NativeEventEmitter(MobSMS);  //创建自定义事件接口
+
+let smsListener = smsNativeEvent.addListener('mobSMSEvent', (resp) => {
+  emitter.emit(resp.type, resp);
+});  //对应了原生端的名字
 
 export default class RegisterScreen extends React.Component {
   static navigationOptions = {
@@ -36,11 +49,18 @@ export default class RegisterScreen extends React.Component {
      code:'获取验证码',
      isPassword:true,
      loading: false
-  };
+   };
   }
 
   sendCode=()=>{
-    
+    new Promise((resolve, reject) => {
+    MobSMS.getVerificationCodeByMethod(0,this.state.username,'86',() => {});
+    emitter.once('getVerificationCode.Resp', (resp) => {
+
+
+      resolve(resp)
+    });
+  });
   }
 
   makeRegister=()=>{
@@ -57,7 +77,7 @@ export default class RegisterScreen extends React.Component {
       style = {{flex:1,marginLeft:10}}
         placeholder="请输入账号"
         value={this.state.username}
-        onChangeText={(username) => this.setState({username})}
+        onChangeText={(username) => this.setState({username:username})}
       />
 
       </View>
