@@ -4,7 +4,7 @@ import {fetch,Headers} from 'fetch'
 import Storage from 'react-native-storage';
 
 export function doPost(api,params){
-  const url = 'http://115.28.242.24:8080/SWC_AC/'+api;
+  const url = 'https://kong4499.gicp.net:443/SWC_AC/'+api;
   const headers = new Headers();
   headers.append('Content-Type','application/x-www-form-urlencoded');
   const init = {
@@ -19,7 +19,7 @@ export function doPost(api,params){
 export function operationDevice(operation_id,state){
   console.log(state.power)
   // const url = 'http://localhost:8080/device/'+state.currentRoomId+'/operation'
-  const url = 'http://115.28.242.24:8080/ssm/device/'+state.currentRoomId+'/operation'
+  const url = 'https://kong4499.gicp.net:443/ssm/device/'+state.currentRoomId+'/operation'
   const headers = new Headers();
   var params = {
     token:state.token,
@@ -43,7 +43,7 @@ export function operationDevice(operation_id,state){
 
 export function setRoom(api,room_id,params){
   // const url = 'http://localhost:8080/device/'+room_id+'/'+api
-  const url = 'http://115.28.242.24:8080/ssm/device/'+room_id+'/'+api
+  const url = 'https://kong4499.gicp.net:443/ssm/device/'+room_id+'/'+api
   const headers = new Headers();
   headers.append('Content-Type','application/x-www-form-urlencoded');
   const init = {
@@ -55,7 +55,7 @@ export function setRoom(api,room_id,params){
   return fetch(url,init).then((response) => response.json())
 }
 export function doGet(api,params){
-  const url = 'http://115.28.242.24:8080/SWC_AC/'+api;
+  const url = 'https://kong4499.gicp.net:443/SWC_AC/'+api;
   const headers = new Headers();
   headers.append('Content-Type','application/x-www-form-urlencoded');
   const init = {

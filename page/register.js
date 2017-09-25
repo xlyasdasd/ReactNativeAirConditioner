@@ -96,20 +96,19 @@ export default class RegisterScreen extends React.Component {
 
   makeRegister=()=>{
      const { navigate } = this.props.navigation;
-    // if (Platform.OS == 'android') {
-    //   AndroidSMS.confirmSMS('86',this.state.username,this.state.password)
-    // }else if(Platform.OS == 'ios'){
-    //     MobSMS.commitVerificationCode(this.state.password,this.state.username,'86',() => {});
-    //     emitter.once('commitVerificationCode.Resp', (resp) => {
-    //         if (resp.code === 0) {
-    //           Navigate('SetPasswordScreen')
-    //         }else {
-    //           Alert('验证码错误')
-    //         }
-    //     });
-    // //
-    // }
-    navigate('SetPasswordScreen')
+    if (Platform.OS == 'android') {
+      AndroidSMS.confirmSMS('86',this.state.username,this.state.password)
+    }else if(Platform.OS == 'ios'){
+        MobSMS.commitVerificationCode(this.state.password,this.state.username,'86',() => {});
+        emitter.once('commitVerificationCode.Resp', (resp) => {
+            if (resp.code === 0) {
+              Navigate('SetPasswordScreen')
+            }else {
+              Alert('验证码错误')
+            }
+        });
+    //
+    }
   }
 
   render() {
