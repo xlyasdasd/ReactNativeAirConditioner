@@ -71,7 +71,7 @@ export default class RegisterScreen extends React.Component {
   sendCode=()=>{
     var params = {
         "phoneNum": this.state.username,
-        "option": get,
+        "option": 'get',
     };
 
     doPost('user/registOption',params)//判断用户注册情况

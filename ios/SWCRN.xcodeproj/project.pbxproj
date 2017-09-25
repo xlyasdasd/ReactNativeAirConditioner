@@ -33,6 +33,8 @@
 		7A1A96D81F77BF34008042AC /* radioOn.png in Resources */ = {isa = PBXBuildFile; fileRef = 7A1A96BE1F77BF34008042AC /* radioOn.png */; };
 		7A1A96E21F77BF34008042AC /* main.jsbundle in Resources */ = {isa = PBXBuildFile; fileRef = 7A1A96D21F77BF34008042AC /* main.jsbundle */; };
 		7A1A96E31F77BF34008042AC /* main.jsbundle.meta in Resources */ = {isa = PBXBuildFile; fileRef = 7A1A96D31F77BF34008042AC /* main.jsbundle.meta */; };
+		7A59429B1F790B280037E031 /* index.ios.jsbundle in Resources */ = {isa = PBXBuildFile; fileRef = 7A5942991F790B280037E031 /* index.ios.jsbundle */; };
+		7A59429C1F790B280037E031 /* index.ios.jsbundle.meta in Resources */ = {isa = PBXBuildFile; fileRef = 7A59429A1F790B280037E031 /* index.ios.jsbundle.meta */; };
 		7AF424361F7158CB00D271A4 /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 		9BCAE446266F4C7CAD890618 /* EvilIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 8990589F115A452BB0697A4D /* EvilIcons.ttf */; };
@@ -312,6 +314,8 @@
 		7A1A96BE1F77BF34008042AC /* radioOn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = radioOn.png; sourceTree = "<group>"; };
 		7A1A96D21F77BF34008042AC /* main.jsbundle */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
 		7A1A96D31F77BF34008042AC /* main.jsbundle.meta */ = {isa = PBXFileReference; lastKnownFileType = file; path = main.jsbundle.meta; sourceTree = "<group>"; };
+		7A5942991F790B280037E031 /* index.ios.jsbundle */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = index.ios.jsbundle; path = bundle/index.ios.jsbundle; sourceTree = "<group>"; };
+		7A59429A1F790B280037E031 /* index.ios.jsbundle.meta */ = {isa = PBXFileReference; lastKnownFileType = file; name = index.ios.jsbundle.meta; path = bundle/index.ios.jsbundle.meta; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
 		8439738E95AF65AA24091064 /* Pods-SWCRNTests.stagging.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SWCRNTests.stagging.xcconfig"; path = "Pods/Target Support Files/Pods-SWCRNTests/Pods-SWCRNTests.stagging.xcconfig"; sourceTree = "<group>"; };
 		8990589F115A452BB0697A4D /* EvilIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = EvilIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf"; sourceTree = "<group>"; };
@@ -416,6 +420,8 @@
 			isa = PBXGroup;
 			children = (
 				7A1A96B81F77BF34008042AC /* assets */,
+				7A5942991F790B280037E031 /* index.ios.jsbundle */,
+				7A59429A1F790B280037E031 /* index.ios.jsbundle.meta */,
 				7A1A96D21F77BF34008042AC /* main.jsbundle */,
 				7A1A96D31F77BF34008042AC /* main.jsbundle.meta */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
@@ -952,9 +958,11 @@
 				7A1A96D61F77BF34008042AC /* navicon_add.png in Resources */,
 				5C6ED81B024B4690B0EBE233 /* Ionicons.ttf in Resources */,
 				4F305CDEAB254F3280D948F0 /* MaterialCommunityIcons.ttf in Resources */,
+				7A59429B1F790B280037E031 /* index.ios.jsbundle in Resources */,
 				FCCC0D921A2848D6BBDBFE62 /* MaterialIcons.ttf in Resources */,
 				7A1A96D81F77BF34008042AC /* radioOn.png in Resources */,
 				7A1A96D51F77BF34008042AC /* logo.png in Resources */,
+				7A59429C1F790B280037E031 /* index.ios.jsbundle.meta in Resources */,
 				7A1A96E21F77BF34008042AC /* main.jsbundle in Resources */,
 				7A1A96D71F77BF34008042AC /* radioOff.png in Resources */,
 				CB81B40B19FA4DC882A343D4 /* Octicons.ttf in Resources */,
@@ -1077,7 +1085,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.swcac.rnswc;
 				PRODUCT_NAME = SWCRN;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -1106,7 +1114,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.swcac.rnswc;
 				PRODUCT_NAME = SWCRN;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -1174,7 +1182,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.swcac.rnswc;
 				PRODUCT_NAME = SWCRN;
 				VERSIONING_SYSTEM = "apple-generic";
 			};

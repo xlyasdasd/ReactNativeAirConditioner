@@ -5,19 +5,19 @@ target 'SWCRN' do
     rn_path = '../node_modules/react-native'
     pod 'Yoga', :path => '../node_modules/react-native/ReactCommon/yoga/Yoga.podspec'
     pod 'SMSSDK'
-    pod 'React', path: rn_path, subspecs: [
-    'DevSupport',
-    'Core',
-    'RCTActionSheet',
-    'RCTAnimation',
-    'RCTGeolocation',
-    'RCTImage',
-    'RCTLinkingIOS',
-    'RCTNetwork',
-    'RCTSettings',
-    'RCTText',
-    'RCTVibration',
-    'RCTWebSocket',
-    'BatchedBridge'
-  ]
+#    pod 'React', path: rn_path, subspecs: [
+#    'DevSupport',
+#    'Core',
+#    'RCTActionSheet',
+#    'RCTAnimation',
+#    'RCTGeolocation',
+#    'RCTImage',
+#    'RCTLinkingIOS',
+#    'RCTNetwork',
+#    'RCTSettings',
+#    'RCTText',
+#    'RCTVibration',
+#    'RCTWebSocket',
+#    'BatchedBridge'
+#  ]
 end

@@ -132,6 +132,7 @@ class LoginScreen extends React.Component {
           console.log(res)
         }).catch((e)=>{
           this.setState({visible:false})
+          Alert.alert('设备不在线')
           console.log(e)
         });
   }

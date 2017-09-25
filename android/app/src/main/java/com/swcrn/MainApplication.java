@@ -13,9 +13,19 @@ import com.facebook.soloader.SoLoader;
 import java.util.Arrays;
 import java.util.List;
 
+import javax.annotation.Nullable;
+
 public class MainApplication extends MobApplication implements ReactApplication {
 
   private final ReactNativeHost mReactNativeHost = new ReactNativeHost(this) {
+
+
+    @Nullable
+    @Override
+    protected String getBundleAssetName() {
+      return "index.android.bundle";
+    }
+
     @Override
     public boolean getUseDeveloperSupport() {
       return BuildConfig.DEBUG;
@@ -30,6 +40,7 @@ public class MainApplication extends MobApplication implements ReactApplication 
       );
     }
   };
+
 
   @Override
   public ReactNativeHost getReactNativeHost() {
