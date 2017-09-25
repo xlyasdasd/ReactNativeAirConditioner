@@ -56,7 +56,7 @@ export default class SetPasswordScreen extends React.Component {
   }
 
   makeRegister=()=>{
-
+    const {navigate} = this.props.navigation
     if (this.state.password === '') {
       Alert.alert('密码不能为空')
     }else if (this.state.password === this.state.checkPassword) {
@@ -69,7 +69,7 @@ export default class SetPasswordScreen extends React.Component {
       .then((responseJson) => {
         console.log(responseJson);
         if(responseJson.status === 1){
-          this.props.navigation.goBack('LoginScreen');
+          navigate('LoginScreen');
         }else {
           Alert.alert(responseJson.message)
         }

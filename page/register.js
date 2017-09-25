@@ -102,9 +102,9 @@ export default class RegisterScreen extends React.Component {
         MobSMS.commitVerificationCode(this.state.password,this.state.username,'86',() => {});
         emitter.once('commitVerificationCode.Resp', (resp) => {
             if (resp.code === 0) {
-              Navigate('SetPasswordScreen')
+              navigate('SetPasswordScreen')
             }else {
-              Alert('验证码错误')
+              Alert.alert('验证码错误')
             }
         });
     //
