@@ -1,9 +1,9 @@
 最新版0.48 ReactNative IOS Android 全部复用代码 
  使用:  
-1.npm环境 
-2.根目录npm install  react-native-element下载失败需要删除node_module多试几次  
+1.npm环境  
+2.根目录npm install react-native-element下载失败需要删除node_module多试几次  
 3.
-环境:
+环境:  
 node v8.5.0  
 npm 5.3.0   
   
