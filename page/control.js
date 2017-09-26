@@ -26,7 +26,12 @@ class LoginScreen extends React.Component {
 
   static navigationOptions = ({ navigation })=>({
     title: `操作设备 ${navigation.state.params.name}`,
+    headerRight:<Button title='修改当前设备' onPress={this.editDevice}/>,
   });
+
+  editDevice = ()=>{
+    
+  }
   constructor(props){
     super(props);
    this.state = {

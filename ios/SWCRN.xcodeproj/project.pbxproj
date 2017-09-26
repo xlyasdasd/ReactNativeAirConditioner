@@ -1097,7 +1097,7 @@
 			baseConfigurationReference = 653E19E1851C6A5728F4D1D7 /* Pods-SWCRN.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: LeYuan Xu (VAKF39HX2H)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 42M5M6L68Y;
 				FRAMEWORK_SEARCH_PATHS = (

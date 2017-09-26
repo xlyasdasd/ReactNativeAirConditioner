@@ -15,27 +15,15 @@ import { StackNavigator ,TabNavigator} from 'react-navigation';
 
 class HomeScreen extends React.Component {
 
-  static navigatorButtons = {
-      rightButtons: [
-        {
-          icon: require('../img/navicon_add.png'), // for icon button, provide the local image asset name
-          id: 'add' // id for this button, given in onNavigatorEvent(event) to help understand which button was clicked
-        }
-      ]
-    };
-
-    onNavigatorEvent(event) { // this is the onPress handler for the two buttons together
-       if (event.type == 'NavBarButtonPress') { // this is the event type for button presses
-         if (event.id == 'add') {
-           AlertIOS.alert('NavBar', 'Add button pressed');
-         }
-       }
-     }
-
   static navigationOptions = {
     title: '设备列表',
+    headerRight:  <Button title='添加' onPress={this.addDevice}/>,
   };
 
+  addDevice = ()=>{
+    const {navigate} = this.props.navigation
+    navigate('AddDevice')
+  }
   constructor(props) {
       super(props);
       this.state = {
