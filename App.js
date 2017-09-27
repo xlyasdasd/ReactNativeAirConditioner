@@ -101,6 +101,7 @@ class LoginScreen extends React.Component {
 
       <View style={styles.textInputContianer}>
       <TextInput
+        underlineColorAndroid='rgba(0,0,0,0)'
       style = {{flex:1,marginLeft:10}}
         placeholder="请输入账号"
         value={this.state.username}
@@ -111,6 +112,7 @@ class LoginScreen extends React.Component {
 
       <View style={styles.textInputContianer}>
       <TextInput
+        underlineColorAndroid='rgba(0,0,0,0)'
         style = {{flex:1,marginLeft:10}}
          value={this.state.password}
         password = {this.state.isPassword}

@@ -84,7 +84,7 @@ export default class RegisterScreen extends React.Component {
           MobSMS.getVerificationCodeByMethod(0,this.state.username,'86',() => {});  //IOS发送验证码
         }
       }else {
-        alert(responseJson.message)
+        Alert.alert(responseJson.message)
       }
 
     })

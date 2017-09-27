@@ -48,7 +48,7 @@ public class MobSMSModule extends ReactContextBaseJavaModule {
                 if (data instanceof Throwable) {
                     Throwable throwable = (Throwable)data;
                     String msg = throwable.getMessage();
-                    Toast.makeText(reactContext,msg,Toast.LENGTH_SHORT).show();
+//                    Toast.makeText(reactContext,msg,Toast.LENGTH_SHORT).show();
                 } else {
                     switch (event){
                         case SMSSDK.EVENT_GET_VERIFICATION_CODE:

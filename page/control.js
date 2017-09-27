@@ -4,6 +4,7 @@ import {
   Text,
   View,
   TouchableHighlight,
+  Button,
   StyleSheet,TouchableWithoutFeedback,
   TouchableOpacity
 } from 'react-native';
@@ -30,7 +31,7 @@ class LoginScreen extends React.Component {
   });
 
   editDevice = ()=>{
-    
+
   }
   constructor(props){
     super(props);
