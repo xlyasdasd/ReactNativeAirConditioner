@@ -25,6 +25,9 @@ import { List, ListItem, SearchBar } from "react-native-elements";
 import { StackNavigator ,TabNavigator} from 'react-navigation';
 import {SetPasswordScreen} from './setPassword'
 
+import Spinner from 'react-native-loading-spinner-overlay';
+import Toast, {DURATION} from 'react-native-easy-toast'
+
 import Storage from 'react-native-storage';
 
 var Dimensions = require('Dimensions');
@@ -51,6 +54,7 @@ export default class RegisterScreen extends React.Component {
      password:'',
      code:'获取验证码',
      isPassword:true,
+     visible:false,
      loading: false
    };
   }
@@ -78,17 +82,19 @@ export default class RegisterScreen extends React.Component {
     .then((responseJson) => {
       console.log(responseJson);
       if(responseJson.status === 1){//用户未注册
+        this.refs.toast.show('验证码发送成功');
         if (Platform.OS == 'android') {
           AndroidSMS.sendSMS('86',this.state.username)//Android发送验证码
         }else if(Platform.OS == 'ios'){
           MobSMS.getVerificationCodeByMethod(0,this.state.username,'86',() => {});  //IOS发送验证码
         }
       }else {
-        Alert.alert(responseJson.message)
+        this.refs.toast.show(responseJson.message);
       }
 
     })
     .catch((error) => {
+      this.refs.toast.show(error);
       console.error(error);
     });
 
@@ -101,10 +107,11 @@ export default class RegisterScreen extends React.Component {
     }else if(Platform.OS == 'ios'){
         MobSMS.commitVerificationCode(this.state.password,this.state.username,'86',() => {});
         emitter.once('commitVerificationCode.Resp', (resp) => {
-            if (resp.code === 0) {
-              navigate('SetPasswordScreen')
+          console.log(resp)
+            if (resp.code === '0') {
+              navigate('SetPasswordScreen',{username:this.state.username})
             }else {
-              Alert.alert('验证码错误')
+              this.refs.toast.show('验证码错误');
             }
         });
     //
@@ -156,7 +163,8 @@ export default class RegisterScreen extends React.Component {
           <TouchableHighlight onPress={this.makeRegister} style={styles.loginByPhoneBtnContianer}>
               <Text style={styles.loginByPhoneBtnTitle}>确认</Text>
           </TouchableHighlight>
-
+          <Spinner visible={this.state.visible} textContent={""} textStyle={{color: '#FFF'}} />
+          <Toast position='center' ref="toast"/>
   </View>
     );
   }

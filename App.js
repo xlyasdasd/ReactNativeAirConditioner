@@ -22,7 +22,9 @@ import DeviceList from './page/deviceList';
 import Register from './page/register';
 import SetPasswordScreen from './page/setPassword'
 import Storage from 'react-native-storage';
+import Spinner from 'react-native-loading-spinner-overlay';
 import {saveUser,getUser} from './storage/SWCStorage.js'
+import Toast, {DURATION} from 'react-native-easy-toast'
 
 var Dimensions = require('Dimensions');
 //获取屏幕宽度
@@ -38,6 +40,7 @@ class LoginScreen extends React.Component {
      username: '',
      password:'',
      isPassword:true,
+     visible:false,
      loading: false
   };
   }
@@ -62,8 +65,8 @@ class LoginScreen extends React.Component {
     this.props.navigation.navigate('Register');
   }
   makeLogin = ()=>{
+      this.setState({ visible: true });
       const {username,password} = this.state;
-      this.setState({ loading: true });
       const { navigate } = this.props.navigation;
       var params = {
           "username": username,
@@ -73,19 +76,20 @@ class LoginScreen extends React.Component {
       doPost('user/login',params)
       .then((responseJson) => {
         console.log(responseJson);
+        this.setState({ visible: false });
         if(responseJson.status === 1){
           const token = responseJson.data[0].token
           const userId = responseJson.data[0].user.id
           var user = {token:token,userId:userId,username:username,password:password}
           saveUser(user)
-
           navigate('DeviceList');
         }else {
-          alert(responseJson.message)
+          this.refs.toast.show('用户名或密码错误');
         }
 
       })
       .catch((error) => {
+        this.setState({ visible: false });
         console.error(error);
       });
   }
@@ -134,7 +138,8 @@ class LoginScreen extends React.Component {
               <Text style={styles.registeredBtnTitle}>立即注册</Text>
           </TouchableHighlight>
 
-
+        <Spinner visible={this.state.visible} textContent={""} textStyle={{color: '#FFF'}} />
+      <Toast position='center' ref="toast"/>
   </View>
     );
   }

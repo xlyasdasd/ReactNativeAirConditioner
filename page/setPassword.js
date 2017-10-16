@@ -23,6 +23,9 @@ import {doPost} from '../net/net'
 import {Headers,fetch} from 'fetch'
 import { List, ListItem, SearchBar } from "react-native-elements";
 import { StackNavigator ,TabNavigator,NavigationActions} from 'react-navigation';
+import Spinner from 'react-native-loading-spinner-overlay';
+import Toast, {DURATION} from 'react-native-easy-toast'
+
 
 import Storage from 'react-native-storage';
 
@@ -46,41 +49,48 @@ export default class SetPasswordScreen extends React.Component {
   constructor(props){
     super(props);
    this.state = {
-     username:'',
+     username:this.props.navigation.state.params.username,
      checkPassword: '',
      password:'',
      code:'获取验证码',
      isPassword:true,
+     visible:false,
      loading: false
    };
   }
 
   makeRegister=()=>{
+    this.setState({visible:true})
     const {navigate} = this.props.navigation
     if (this.state.password === '') {
-      Alert.alert('密码不能为空')
+      this.setState({visible:false})
+      this.refs.toast.show('密码不一致');
     }else if (this.state.password === this.state.checkPassword) {
       var params = {
         phoneNum:this.state.username,
         option:'regist',
-        password:'password'
+        password:this.state.password
       }
+      console.log(params)
       doPost('user/registOption',params)
       .then((responseJson) => {
+        this.setState({visible:false})
         console.log(responseJson);
         if(responseJson.status === 1){
           navigate('LoginScreen');
         }else {
-          Alert.alert(responseJson.message)
+          this.refs.toast.show(responseJson.message);
         }
 
       })
       .catch((error) => {
+        this.setState({visible:false})
         console.error(error);
       });
 
     }else {
-      Alert.alert('密码输入不一致')
+      this.setState({visible:false})
+      this.refs.toast.show('密码输入不一致');
     }
 
   }
@@ -114,7 +124,8 @@ export default class SetPasswordScreen extends React.Component {
           <TouchableHighlight onPress={this.makeRegister} style={styles.loginByPhoneBtnContianer}>
               <Text style={styles.loginByPhoneBtnTitle}>立即注册</Text>
           </TouchableHighlight>
-
+          <Spinner visible={this.state.visible} textContent={""} textStyle={{color: '#FFF'}} />
+          <Toast position='center' ref="toast"/>
   </View>
     );
   }
