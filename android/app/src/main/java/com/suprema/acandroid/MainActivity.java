@@ -1,4 +1,4 @@
-package com.swcrn;
+package com.suprema.acandroid;
 
 import com.facebook.react.ReactActivity;
 

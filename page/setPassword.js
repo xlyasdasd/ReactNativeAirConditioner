@@ -25,6 +25,7 @@ import { List, ListItem, SearchBar } from "react-native-elements";
 import { StackNavigator ,TabNavigator,NavigationActions} from 'react-navigation';
 import Spinner from 'react-native-loading-spinner-overlay';
 import Toast, {DURATION} from 'react-native-easy-toast'
+import dismissKeyboard from 'dismissKeyboard';
 
 
 import Storage from 'react-native-storage';
@@ -60,7 +61,8 @@ export default class SetPasswordScreen extends React.Component {
   }
 
   makeRegister=()=>{
-    this.setState({visible:true})
+      dismissKeyboard();
+      this.setState({visible:true})
     const {navigate} = this.props.navigation
     if (this.state.password === '') {
       this.setState({visible:false})

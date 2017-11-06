@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.swcrn"
+    package="com.suprema.acandroid"
     android:versionCode="1"
     android:versionName="1.0">
     <!--Mob短信权限-->
@@ -28,8 +28,8 @@
       android:theme="@style/AppTheme">
 
         <!-- 通过AndroidManifest配置AppKey和AppSecret，如果你选择通过代码配置，则不需要配置以下meta-data -->
-        <meta-data android:name="Mob-AppKey" android:value="2139c10b21a44"/>
-        <meta-data android:name="Mob-AppSecret" android:value="a4c8446246390bb1cb0a33cfd41a14e3"/>
+        <meta-data android:name="Mob-AppKey" android:value="e7dfd9324b50"/>
+        <meta-data android:name="Mob-AppSecret" android:value="3e8074c8462e4b243373468fc5a9c143"/>
 
       <activity
         android:name=".MainActivity"

@@ -1,11 +1,13 @@
-package com.swcrn.module;
+package com.suprema.acandroid.module;
 
-import android.widget.Toast;
+import android.support.annotation.Nullable;
 
+import com.facebook.react.bridge.Arguments;
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
-import com.swcrn.MainApplication;
+import com.facebook.react.bridge.WritableMap;
+import com.facebook.react.modules.core.DeviceEventManagerModule;
 
 import cn.smssdk.EventHandler;
 import cn.smssdk.SMSSDK;
@@ -30,32 +32,39 @@ public class MobSMSModule extends ReactContextBaseJavaModule {
     public String getName() {
         return "AndroidMobSMS";
     }
+
     @ReactMethod
-    public void sendSMS(String country,String phone){
+    public void sendSMS(String country, String phone) {
         SMSSDK.getVerificationCode(country, phone);
     }
 
     @ReactMethod
-    public void confirmSMS(String country,String phone ,String code){
-        SMSSDK.submitVerificationCode(country,phone,code);
+    public void confirmSMS(String country, String phone, String code) {
+        SMSSDK.submitVerificationCode(country, phone, code);
     }
+
     @ReactMethod
-    public void registerSMS(){
+    public void registerSMS() {
 
         // 创建EventHandler对象
-         eventHandler = new EventHandler() {
+        eventHandler = new EventHandler() {
             public void afterEvent(int event, int result, Object data) {
+                WritableMap map = Arguments.createMap();
                 if (data instanceof Throwable) {
-                    Throwable throwable = (Throwable)data;
-                    String msg = throwable.getMessage();
+                    Throwable throwable = (Throwable) data;
+//                    String msg = throwable.getMessage();
+                    map.putString("code", "500");
+                    sendEvent("mobSMSEvent", map);
 //                    Toast.makeText(reactContext,msg,Toast.LENGTH_SHORT).show();
                 } else {
-                    switch (event){
+                    switch (event) {
                         case SMSSDK.EVENT_GET_VERIFICATION_CODE:
                             break;
                         case SMSSDK.EVENT_GET_CONTACTS:
                             break;
                         case SMSSDK.EVENT_SUBMIT_VERIFICATION_CODE:
+                            map.putString("code", "0");
+                            sendEvent("mobSMSEvent", map);
                             break;
                         case SMSSDK.RESULT_COMPLETE:
                             break;
@@ -69,8 +78,17 @@ public class MobSMSModule extends ReactContextBaseJavaModule {
         // 注册监听器
         SMSSDK.registerEventHandler(eventHandler);
     }
+
+
     @ReactMethod
-    public void unRegisterSMS(){
+    public void unRegisterSMS() {
         SMSSDK.unregisterEventHandler(eventHandler);
     }
+
+    private void sendEvent(String eventName, @Nullable WritableMap params) {
+        getReactApplicationContext()
+                .getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class)
+                .emit(eventName, params);
+    }
+
 }

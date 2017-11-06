@@ -17,7 +17,6 @@ class HomeScreen extends React.Component {
 
   static navigationOptions = {
     title: '设备列表',
-    headerRight:  <Button title='添加' onPress={this.addDevice}/>,
   };
 
   addDevice = ()=>{

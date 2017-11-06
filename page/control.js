@@ -18,7 +18,6 @@ import {
   MenuTrigger,
   MenuContext,
 } from 'react-native-popup-menu';
-import { StackNavigator } from 'react-navigation';
 import {setRoom ,operationDevice} from '../net/net'
 var Dimensions = require('Dimensions');
 var screenWidth = Dimensions.get('window').width;
@@ -27,7 +26,6 @@ class LoginScreen extends React.Component {
 
   static navigationOptions = ({ navigation })=>({
     title: `操作设备 ${navigation.state.params.name}`,
-    headerRight:<Button title='修改当前设备' onPress={this.editDevice}/>,
   });
 
   editDevice = ()=>{
